@@ -4,4 +4,4 @@ MAINTAINER Han Yi(hanystudy@gmail.com)
 
 ADD ./data.sql /data.sql
 
-CMD ['mysql', '< /data.sql', '--host=localhost', '--user=$DB_USER', '--password=$DB_PASS']
+CMD ['mysql', '< /data.sql', '--host=localhost', '--user=$MYSQL_USER', '--password=$MYSQL_PASSWORD']
