@@ -52,4 +52,4 @@ uwsgi
 Total size
 ------------
 
-1.393GB
+1.347GB
