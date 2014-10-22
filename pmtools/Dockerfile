@@ -1,4 +1,4 @@
-FROM centos:centos6
+FROM centos:centos7
 
 MAINTAINER Han Yi
 
@@ -17,16 +17,18 @@ RUN yum install -y memcached
 RUN yum install -y php-fpm php-mysql php-cli php-xml
 
 # Install python environment
-RUN yum install -y python-setuptools python-devel python-psycopg2 python-pip
-RUN pip install -U python-memcached
 RUN yum groupinstall -y "Development Tools" # Only for uwsgi
+RUN yum install -y python-setuptools python-devel python-psycopg2 python-pip
+RUN yum install -y mysql-devel
+RUN pip install -U python-memcached
+RUN pip install mysql-python
 RUN pip install -U uwsgi
 
 # Install git
 RUN yum install -y git-core
 
 # Install reviewboard
-RUN yum install -y ReviewBoard
+RUN easy_install ReviewBoard
 
 # Add system service config
 ADD ./supervisord.conf /etc/supervisord.conf 
